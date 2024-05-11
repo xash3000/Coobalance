@@ -15,7 +15,7 @@ public class PlatformController : MonoBehaviour
 
         if (Mathf.Abs(currentAngle) > angleLimit)
         {
-            print("Game over");
+            GameManager.Instance.GameOver();
             joint.enabled = false;
             rb2d.gravityScale = 1f;
         }
