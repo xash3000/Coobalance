@@ -24,6 +24,11 @@ public class ObjectSpawner : MonoBehaviour
             randomIndex = Random.Range(0, objects.Length);
             GameObject obj = objects[randomIndex];
 
+            if (obj.CompareTag("Spike"))
+            {
+                int randomChance = Random.Range(0, 100);
+                if (randomChance > 20) return;
+            }
             Instantiate(obj, point.position, Quaternion.identity);
             spawnDelay = maxSpawnDelay;
             GameManager.Instance.IncrementScore();

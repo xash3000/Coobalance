@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     public int score = 0;
     public int highestScore = 0;
 
+    [SerializeField] private AudioSource mainMusic;
+    [SerializeField] private AudioSource gameOverMusic;
+
     private void Awake()
     {
         if(Instance == null)
@@ -34,12 +37,15 @@ public class GameManager : MonoBehaviour
     public void DecrementScore()
     {
         score--;
+        if (score < 0) score = 0;
         ScoreChangeEvent?.Invoke();
     }
 
     public void GameOver()
     {
         gameRunning = false;
+        mainMusic.Stop();
+        gameOverMusic.Play();
         StartCoroutine(WaitAndShowGameOver());
     }
 

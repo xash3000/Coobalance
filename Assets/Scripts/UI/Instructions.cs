@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Instructions : MonoBehaviour
 {
@@ -10,5 +11,10 @@ public class Instructions : MonoBehaviour
     {
         panel.SetActive(false);
         GameManager.Instance.gameRunning = true;
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }
